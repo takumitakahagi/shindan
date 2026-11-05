@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>整骨院経営課題 無料診断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FFFCF6;
+    --card:#FFFFFF;
+    --soft:#FFF4E6;
+    --soft-2:#EAF7F3;
+    --ink:#33302B;
+    --ink-2:#6E675E;
+    --ink-3:#A79E92;
+    --rule:#F0E6D6;
+    --rule-2:#F7EFE3;
+    --orange:#F0862F;
+    --orange-d:#DE7420;
+    --mint:#1FA98F;
+    --mint-d:#127966;
+    --mint-l:#8FD6C7;
+    --sun:#FFC53D;
+    --berry:#E4566B;
+    --night:#24312E;
+    --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",YuMincho,serif;
+    --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",YuGothic,sans-serif;
+    --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",sans-serif;
+    --num:"Cormorant Garamond","Garamond",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.95;
+    letter-spacing:.04em;
+    -webkit-font-smoothing:antialiased;
+    font-variant-numeric:lining-nums;
+  }
+  .sheet{max-width:620px;margin:0 auto;padding:0 20px 72px}
+
+  h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;line-height:1.65;letter-spacing:.06em}
+  h1{font-size:1.68rem}
+  h2{font-size:1.24rem}
+  p{margin:0 0 1em}
+  .lead{color:var(--ink-2);font-size:.96rem}
+  .note{font-size:.74rem;color:var(--ink-3);margin-top:8px;line-height:1.7}
+
+  /* ---------- 見出しバー ---------- */
+  .brandbar{background:var(--card);border-bottom:1px solid var(--rule)}
+  .brandbar .sheet{padding:14px 20px;display:flex;align-items:center;gap:12px}
+  .mark{
+    width:30px;height:30px;flex:none;border-radius:50%;border:1px solid var(--sun);
+    display:grid;place-items:center;font-family:var(--serif);font-size:.9rem;font-weight:600;color:#7A5200;
+  }
+  .brandname{font-family:var(--serif);font-size:.98rem;font-weight:600;letter-spacing:.1em}
+  .brandsub{font-size:.72rem;color:var(--ink-3);margin-left:auto;letter-spacing:.12em}
+
+  /* ---------- 部品 ---------- */
+  .btn{
+    display:block;width:100%;border:none;border-radius:6px;
+    background:var(--orange);color:#fff;
+    font-family:var(--sans);font-size:1rem;font-weight:500;letter-spacing:.14em;
+    padding:18px 20px;cursor:pointer;text-align:center;
+    box-shadow:0 6px 18px rgba(222,116,32,.18);
+    transition:transform .15s ease,box-shadow .2s ease,background .2s ease;
+  }
+  .btn:hover{background:var(--orange-d);box-shadow:0 8px 22px rgba(222,116,32,.24)}
+  .btn:active{transform:translateY(1px)}
+  .btn.ghost{background:transparent;color:var(--ink-2);box-shadow:0 0 0 1px var(--rule) inset}
+  .btn.ghost:hover{background:var(--soft);color:var(--ink)}
+  .btn.line{background:#06C755;box-shadow:0 6px 18px rgba(6,199,85,.16)}
+  .btn.line:hover{background:#05b850}
+  .btn.slim{padding:13px 18px;font-size:.9rem}
+  :focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+
+  .chip{
+    display:inline-flex;align-items:center;gap:10px;background:none;color:#9A6B00;
+    font-size:.72rem;font-weight:500;padding:0;letter-spacing:.2em;
+  }
+  .chip:before{content:"";width:22px;height:1px;background:currentColor}
+  .chip.mint{color:var(--mint-d)}
+  .meta{font-size:.76rem;color:var(--ink-3);letter-spacing:.08em}
+  .divider{height:1px;background:var(--rule);border:0;margin:34px 0}
+  .card{background:var(--card);border-radius:10px;padding:20px;box-shadow:0 2px 14px rgba(120,95,60,.06)}
+  .card.soft{background:var(--soft);box-shadow:none}
+  .stack>*+*{margin-top:12px}
+
+  .view{display:none}
+  .view.on{display:block}
+
+  /* ---------- LP ---------- */
+  .hero{padding:34px 0 8px}
+  .hero h1{font-size:1.9rem;line-height:1.7;margin:16px 0 14px}
+  .hero h1 mark{background:linear-gradient(transparent 80%,rgba(255,197,61,.7) 80%);padding:0 2px;color:inherit}
+  .factline{display:flex;gap:0;justify-content:center;margin:16px 0 0;flex-wrap:wrap}
+  .factline span{font-size:.74rem;color:var(--ink-3);letter-spacing:.1em;padding:0 12px;border-left:1px solid var(--rule)}
+  .factline span:first-child{border-left:0}
+  .scopelist{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 16px;border-top:1px solid var(--rule)}
+  .scopelist li{padding:12px 2px;font-family:var(--serif);font-size:.95rem;font-weight:600;letter-spacing:.06em;border-bottom:1px solid var(--rule)}
+
+  /* ---------- 質問 ---------- */
+  .qhead{padding:30px 0 0}
+  .qcount{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .qcount .no{font-family:var(--num);font-size:1.5rem;font-weight:600;color:var(--orange);line-height:1}
+  .qcount .no i{font-style:normal;font-size:.9rem;color:var(--ink-3);margin-left:3px}
+  .qcount .cat{font-size:.72rem;color:var(--ink-3);letter-spacing:.14em}
+  .track{height:3px;background:var(--rule-2);border-radius:999px;margin:12px 0 26px;overflow:hidden}
+  .track > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--sun),var(--orange));width:0;transition:width .45s cubic-bezier(.2,.8,.25,1)}
+  .qtext{font-size:1.32rem;line-height:1.75;margin:0 0 6px;font-weight:600}
+  .qsub{font-size:.8rem;color:var(--ink-3);margin:0;letter-spacing:.06em}
+  .qsub:empty{display:none}
+  .opts{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+  .opt{
+    display:flex;align-items:center;gap:13px;width:100%;
+    background:var(--card);border:1px solid var(--rule);border-radius:8px;
+    padding:16px 17px;cursor:pointer;text-align:left;
+    font-family:var(--sans);font-size:1rem;color:var(--ink);line-height:1.55;font-weight:400;letter-spacing:.04em;
+    transition:border-color .15s ease,background .15s ease,transform .12s ease;
+  }
+  .opt:hover{border-color:var(--mint-l);transform:translateY(-1px)}
+  .opt .key{
+    width:26px;height:26px;flex:none;border-radius:50%;border:1px solid var(--rule);
+    display:grid;place-items:center;font-family:var(--num);font-size:.95rem;font-weight:600;color:var(--ink-3);
+    transition:all .15s ease;
+  }
+  .opt.sel{border-color:var(--mint);background:var(--soft-2)}
+  .opt.sel .key{background:var(--mint);border-color:var(--mint);color:#fff}
+  .qfoot{margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .backlink{background:none;border:0;color:var(--ink-3);font-family:var(--sans);font-size:.84rem;letter-spacing:.06em;cursor:pointer;padding:6px 0}
+  .backlink:hover{color:var(--orange)}
+  .cheer{font-size:.78rem;letter-spacing:.08em;color:var(--mint-d)}
+
+  /* ---------- 結果 ---------- */
+  .verdict{padding:32px 0 0}
+  .verdict .code{font-family:var(--num);font-size:.9rem;font-weight:600;color:var(--ink-3);letter-spacing:.24em}
+  .verdict h1{font-size:1.7rem;margin:8px 0 12px;line-height:1.65}
+  .verdict h1 mark{background:linear-gradient(transparent 80%,rgba(255,197,61,.7) 80%);padding:0 3px;color:inherit}
+  .verdict .kata{font-family:var(--serif);font-size:1.04rem;font-weight:600;margin-bottom:8px;letter-spacing:.05em}
+  .scoretable{margin:12px 0 0;display:grid;gap:6px}
+  .scorerow{
+    display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;
+    background:var(--card);border-radius:8px;padding:9px 16px;box-shadow:0 2px 10px rgba(120,95,60,.05);
+  }
+  .scorerow .cat{font-size:.92rem;font-weight:500}
+  .stars{font-size:1rem;letter-spacing:.1em;color:var(--rule);white-space:nowrap}
+  .stars b{color:var(--sun);font-weight:400}
+  .scorerow.low{background:#FFF3F4;box-shadow:none}
+  .scorerow.low .stars b{color:var(--berry)}
+  .scorerow .val{font-family:var(--num);font-size:1rem;color:var(--ink-3);min-width:44px;text-align:right;font-weight:600}
+  .worst{margin-top:12px;font-size:.88rem;color:var(--ink-2);line-height:1.7}
+  .worst b{color:var(--mint-d)}
+  .worst small{display:block;font-size:.74rem;color:var(--ink-3)}
+
+  /* 見てほしい数字 */
+  .reveal{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+  .reveal li{background:var(--card);border-radius:8px;padding:13px 16px;box-shadow:0 2px 10px rgba(120,95,60,.05);line-height:1.7}
+  .reveal b{display:block;font-family:var(--serif);font-size:1rem;font-weight:600;letter-spacing:.04em}
+  .reveal span{display:block;font-size:.88rem;color:var(--mint-d);font-weight:500}
+  .reveal span:before{content:"→ "}
+
+  /* 試算 */
+  .sim{background:#FFF3F4;border-radius:10px;padding:16px 18px;margin-top:14px;font-size:.92rem;line-height:1.8}
+  .sim b{font-family:var(--num);font-size:2rem;font-weight:600;color:var(--berry);margin:0 3px;line-height:1.2}
+  .sim strong{display:block;margin-top:6px;font-family:var(--serif);font-size:1.04rem;font-weight:600}
+
+  /* 特典 */
+  .gift h2{margin:12px 0 10px}
+  .giftcard{background:var(--soft);border-radius:10px;padding:18px 18px 16px;margin:14px 0 4px}
+  .giftcard small{display:block;font-size:.72rem;color:#9A6B00;letter-spacing:.16em}
+  .giftcard b{display:block;font-family:var(--serif);font-size:1.12rem;font-weight:600;line-height:1.6;margin:4px 0 6px}
+  .giftcard span{display:block;font-size:.84rem;color:var(--ink-2);line-height:1.7}
+  .giftform .btn{margin-top:22px}
+  .giftdone{display:none}
+  .giftdone.on{display:block}
+  .giftdone .thanks{font-family:var(--serif);font-size:1.1rem;font-weight:600;margin:16px 0 14px;line-height:1.7}
+  .keep{border-top:1px solid var(--rule);margin-top:28px;padding-top:20px}
+  .keep p{font-size:.9rem;color:var(--ink-2);line-height:1.8}
+  .keep ol{margin:0 0 16px;padding-left:1.4em;font-size:.86rem;color:var(--ink-2);line-height:1.9}
+
+  /* ---------- 入力 ---------- */
+  label{display:block;font-size:.84rem;font-weight:700;margin:20px 0 6px;color:var(--ink-2)}
+  .req{color:#fff;background:var(--berry);font-size:.66rem;margin-left:7px;padding:2px 8px;border-radius:999px;vertical-align:2px}
+  .any{color:var(--ink-3);background:var(--rule-2);font-size:.66rem;margin-left:7px;padding:2px 8px;border-radius:999px;vertical-align:2px}
+  input,select,textarea{
+    width:100%;padding:14px 15px;font-size:1rem;font-family:var(--sans);color:var(--ink);
+    background:var(--card);border:2px solid var(--rule);border-radius:8px;
+    transition:border-color .18s ease;
+  }
+  textarea{line-height:1.75;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--mint)}
+  input::placeholder,textarea::placeholder{color:var(--ink-3)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+  .err{color:var(--berry);font-size:.86rem;font-weight:700;margin:18px 0 0;display:none;background:#FFF3F4;border-radius:8px;padding:12px 15px}
+  .err.on{display:block}
+
+  /* ---------- 管理画面 ---------- */
+  .adminrow{background:var(--card);border-radius:10px;padding:18px;margin-bottom:11px;box-shadow:0 2px 10px rgba(120,95,60,.05)}
+  .adminrow .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+  .adminrow .top strong{font-size:1.02rem}
+  .tag{font-size:.74rem;font-weight:700;background:var(--soft-2);color:var(--mint-d);border-radius:999px;padding:4px 12px;white-space:nowrap}
+  .tag.gap{background:#FFE9EC;color:var(--berry)}
+  .kv{font-size:.84rem;color:var(--ink-2);margin-top:8px;line-height:1.8}
+  .kv strong{color:var(--ink)}
+  .kv span{display:inline-block;margin-right:14px;font-family:var(--num);font-weight:700}
+  .talk{font-size:.88rem;background:var(--soft);border-radius:8px;padding:14px 16px;margin-top:12px;line-height:1.8}
+  .empty{text-align:center;padding:48px 20px;color:var(--ink-2);font-size:.94rem;background:var(--card);border-radius:10px}
+
+  a.btn{text-decoration:none}
+  .resultcopy{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;margin:20px 0 14px}
+  .resultcopy-row{display:flex;gap:10px;align-items:center}
+  .resultcopy-row output{flex:1;min-width:0;font-size:.9rem;line-height:1.7;user-select:all}
+  .resultcopy-row button{flex:none;font-family:var(--sans);font-size:.8rem;letter-spacing:.08em;color:var(--mint-d);background:none;border:1px solid var(--mint-l);border-radius:6px;padding:7px 12px;cursor:pointer}
+  .footlinks{margin-top:40px;padding-top:18px;border-top:2px solid var(--rule-2);display:flex;gap:18px;flex-wrap:wrap}
+  .footlinks button{background:none;border:0;color:var(--ink-3);cursor:pointer;font-family:var(--sans);font-size:.8rem;font-weight:700;padding:0}
+  .footlinks button:hover{color:var(--orange)}
+
+  @media (max-width:520px){
+    .hero h1{font-size:1.6rem}
+    .qtext{font-size:1.18rem}
+    .verdict h1{font-size:1.42rem}
+    .grid2{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="brandbar">
+  <div class="sheet">
+    <div class="mark">診</div>
+    <div class="brandname">整骨院経営課題 無料診断</div>
+    <div class="brandsub">10問・3分</div>
+  </div>
+</div>
+
+<!-- ============ ① LP ============ -->
+<section class="view on" id="v-lp">
+  <div class="sheet">
+    <div class="hero">
+      <span class="chip">3分でできる経営チェック</span>
+      <h1>売上が伸びないのって、<br><mark>どこが原因</mark>なんだろう？</h1>
+      <p class="lead">「集客かな」<br>「新メニュー作った方が良いのかな」<br>明確に見えている先生は一握りです。<br>3分で是非1度ご確認ください。</p>
+
+      <div style="margin-top:28px">
+        <span class="chip mint">6つの角度でチェック</span>
+        <ul class="scopelist" style="margin-top:12px">
+          <li>新患獲得</li><li>初診継続率</li><li>継続・離脱</li>
+          <li>自費・単価</li><li>患者分析</li><li>行動への活用</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:28px"><button class="btn" onclick="go('intro')">さっそく診断してみる</button></div>
+      <div class="factline"><span>全10問</span><span>約3分</span><span>無料</span><span>登録なしでOK</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ② 診断開始 ============ -->
+<section class="view" id="v-intro">
+  <div class="sheet">
+    <div class="qhead">
+      <span class="chip">準備はカンタン</span>
+      <h1 style="margin:12px 0 16px">いまの院の様子を<br>教えてください</h1>
+      <div class="card soft">
+        <p style="margin:0;font-size:.96rem">分からない項目は、迷わず<strong>「把握していない」</strong>を選んでください。それ自体が大事なヒントになります。</p>
+      </div>
+      <div style="margin-top:24px"><button class="btn" onclick="startQuiz()">1問目にすすむ</button></div>
+      <div class="footlinks"><button onclick="go('lp')">前の画面にもどる</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ③ 質問 ============ -->
+<section class="view" id="v-quiz">
+  <div class="sheet">
+    <div class="qhead">
+      <div class="qcount">
+        <span class="no" id="qc"></span>
+        <span class="cat" id="qcat"></span>
+      </div>
+      <div class="track"><i id="trackfill"></i></div>
+      <h2 class="qtext" id="qtext"></h2>
+      <p class="qsub" id="qsub"></p>
+      <div class="opts" id="opts"></div>
+      <div class="qfoot">
+        <button class="backlink" id="backbtn" onclick="prevQ()">← ひとつ前にもどる</button>
+        <span class="cheer" id="savenote"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ④⑤ 結果 ============ -->
+<section class="view" id="v-result">
+  <div class="sheet">
+    <div class="verdict">
+      <div class="code" id="r-code"></div>
+      <h1 id="r-name"></h1>
+      <div class="kata" id="r-kata"></div>
+      <p class="lead" id="r-body" style="margin:0"></p>
+
+      <hr class="divider">
+      <span class="chip mint">6項目のスコア</span>
+      <div class="scoretable" id="r-scores"></div>
+      <div class="worst" id="r-worst"></div>
+
+      <hr class="divider">
+      <span class="chip">まず見てほしい3つの数字</span>
+      <ul class="reveal" id="r-reveal"></ul>
+      <div class="sim" id="r-sim"></div>
+
+      <hr class="divider">
+      <div class="gift" id="gift">
+        <span class="chip">診断した先生への特典</span>
+        <h2>この3つの数字の出し方を、<br>資料にまとめました</h2>
+        <div class="giftcard">
+          <small>特典資料（PDF）</small>
+          <b id="r-gift"></b>
+          <span>3つの数字を取ることが大切な理由／出し方／書き込みシート</span>
+        </div>
+
+        <!-- 入力（1回だけ） -->
+        <form class="giftform" id="giftform" onsubmit="return takeGift(event)" novalidate>
+          <label for="f-in">院名<span class="req">必須</span></label>
+          <input id="f-in" name="in" autocomplete="organization" placeholder="例：みどり整骨院" maxlength="60">
+          <label for="f-name">先生のお名前<span class="req">必須</span></label>
+          <input id="f-name" name="name" autocomplete="name" placeholder="例：山田 太郎" maxlength="40">
+          <label for="f-tel">電話番号<span class="req">必須</span></label>
+          <input id="f-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="例：090-1234-5678" maxlength="20">
+          <div class="err" id="f-err"></div>
+          <button class="btn" type="submit" id="f-btn">特典資料を受け取る</button>
+          <p class="note" style="text-align:center">ボタンを押すと、この画面に資料が表示されます。<br>資料の内容について、担当よりご連絡させていただくことがあります。</p>
+        </form>
+
+        <!-- 受け取り後（同じ画面で切り替え） -->
+        <div class="giftdone" id="giftdone">
+          <p class="thanks"><span id="d-name"></span>先生、ありがとうございます。<br>資料はこちらからご覧いただけます。</p>
+          <a class="btn" id="d-open" href="#" target="_blank" rel="noopener">資料を開く（PDF）</a>
+          <div class="keep">
+            <span class="chip mint">資料をLINEに保存しておく</span>
+            <p style="margin:10px 0 8px">下のボタンから、資料のリンクを先生のLINEの「Keepメモ」に残せます。いつでもLINEから見返せます。</p>
+            <ol>
+              <li>「LINEのKeepメモに保存」を押す</li>
+              <li>送り先の一覧から「Keepメモ」を選ぶ</li>
+              <li>「送信」を押す</li>
+            </ol>
+            <a class="btn line" id="d-keep" href="#" target="_blank" rel="noopener">LINEのKeepメモに保存</a>
+            <p class="note">Keepメモが見当たらない場合は、ご自身あてのトークを選んでも保存できます。</p>
+          </div>
+        </div>
+      </div>
+      <div class="footlinks"><button onclick="restart()">もう一度診断する</button></div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* =========================================================
+   1. 質問データ（10問／各回答1〜5点）
+   ========================================================= */
+const QUESTIONS = [
+  { id:1, cat:"新患獲得", q:"月の新患数は、どれくらいですか？", sub:"",
+    o:["10人以下","11人〜15人","16人〜20人","21人〜25人","26人以上"] },
+  { id:2, cat:"初診継続率", q:"新規患者の「2回目の来院率」は？", sub:"",
+    o:["把握していない","50％未満","50〜75％","75〜90％","90％以上"] },
+  { id:3, cat:"初診継続率", q:"新規患者が5回目まで来ている割合は？", sub:"",
+    o:["把握していない","50％以下","51％〜60％","61％〜70％","71％以上"] },
+  { id:4, cat:"継続・離脱", q:"7日以上来ていない患者さんの名前を把握出来ていますか？", sub:"",
+    o:["把握していない","何人か思い浮かぶ","調べれば分かる","定期的に確認している","毎日確認している"] },
+  /* Q5はBが最も良く、下にいくほど悪いので、点数を個別に持つ（A「把握していない」は1点） */
+  { id:5, cat:"継続・離脱", q:"院の「離反率」はいくらですか？", sub:"離反率＝（新規＋再初検）÷ レセ枚数",
+    o:["把握していない","10％未満","11％〜20％","21％〜30％","31％以上"], s:[1,5,4,3,2] },
+  { id:6, cat:"自費・単価", q:"1人あたりのLTVはいくらですか？", sub:"LTV＝患者さん1人が通院期間中に支払う金額の合計",
+    o:["把握していない","だいたい分かる","院全体の平均で出している","メニュー別に分かる","患者さんごとに分かる"] },
+  { id:7, cat:"自費・単価", q:"自費の「提案数・成約数」、分かりますか？", sub:"",
+    o:["把握していない","感覚では分かる","成約数だけ分かる","提案数も分かる","スタッフ別・症状別まで分かる"] },
+  { id:8, cat:"患者分析", q:"離れる患者様はどんな患者様ですか？", sub:"",
+    o:["把握していない","感覚で判断している","なんとなくは理解している","何回目で離れているかまで把握している","年齢・症状・担当別に把握している"] },
+  { id:9, cat:"行動への活用", q:"今月の目標に対しての進捗を追えていますか？", sub:"",
+    o:["目標を立てていない","感覚で追っている","たまに計算して追っている","週に1度追っている","毎日追っている"] },
+  { id:10, cat:"行動への活用", q:"数字の根拠の上で、「今日やること」を決めていますか？", sub:"",
+    o:["決めていない","思い出した時に決めている","月末、月初に数字を見て決めている","週に1回確認して決めている","毎日確認して決めている"] }
+];
+
+/* カテゴリー定義（Q番号→カテゴリー） */
+const CATS = [
+  { key:"shinkan",  label:"新患獲得",     qs:[1],         max:5  },
+  { key:"teichaku", label:"初診継続率",   qs:[2,3],       max:10 },
+  { key:"ridatsu",  label:"継続・離脱",   qs:[4,5],       max:10 },
+  { key:"tanka",    label:"自費・単価",   qs:[6,7],       max:10 },
+  { key:"bunseki",  label:"患者分析",     qs:[2,5,8],     max:15 },
+  { key:"kaizen",   label:"行動への活用", qs:[9,10],      max:10 }
+];
+
+/* =========================================================
+   2. タイプ定義
+      reveal：[見てほしい数字, 分かるとできること]
+   ========================================================= */
+const TYPES = {
+  T01:{ code:"TYPE 01", name:"新患づくり 伸びしろタイプ",
+    kata:"入口を広げると、さらに伸びそうな院です。",
+    body:"広告費を足す前に、どの経路から来た方が売上につながっているかを見ておくと、同じ費用でも結果が変わります。",
+    reveal:[
+      ["経路ごとの1人あたり売上","売上につながる経路に、広告費を寄せられる"],
+      ["新規患者の2回目来院率","増やした新患が院に残るか、確かめられる"],
+      ["月ごとの新患数の動き","減る月の前に、紹介キャンペーンを仕込める"]
+    ] },
+
+  T02:{ code:"TYPE 02", name:"初診継続 伸びしろタイプ",
+    kata:"2回目・5回目へとつながると、大きく伸びそうな院です。",
+    body:"新規患者は来てくれています。2回目に来なかった方の分、集客の手間が売上になりきっていないかもしれません。",
+    reveal:[
+      ["2回目来院率（1-2率）","初回のやり方を変えた効果を、翌月に確かめられる"],
+      ["何回目で止まる人が多いか","その1回手前で、通院プランを伝え直せる"],
+      ["スタッフごとの2回目来院率","上手な人の初回の説明を、院の型にできる"]
+    ] },
+
+  T03:{ code:"TYPE 03", name:"フォロー 伸びしろタイプ",
+    kata:"離れかけた患者さんに早めに気づけると、ぐっと伸びそうな院です。",
+    body:"「最近減ったな」と感じるのは、たいてい離れてから何週間もあと。誰が離れかけているかが見えると、声をかけるタイミングを逃しません。",
+    reveal:[
+      ["7日以上空いた患者さんの名前","今日連絡する人を、朝のうちに決められる"],
+      ["離反率","定着と集客、どちらに力を入れるか決められる"],
+      ["何回目で離れたか","離れやすい回の前に、次回予約を入れられる"]
+    ] },
+
+  T04:{ code:"TYPE 04", name:"自費提案 伸びしろタイプ",
+    kata:"患者さんが通ってくれているので、単価に伸びしろがある院です。",
+    body:"提案していないのか、提案して決まっていないのか。中身が分かると、直すところがはっきりします。",
+    reveal:[
+      ["患者さんごとのLTV（窓口金＋自費）","自費を使う方と似た患者さんに絞って提案できる"],
+      ["自費の提案数と成約数","提案を増やすか、伝え方を変えるか決められる"],
+      ["回数券・サブスクの残りと更新時期","終わる前に、次の提案を入れられる"]
+    ] },
+
+  T05:{ code:"TYPE 05", name:"数字の見える化 伸びしろタイプ",
+    kata:"数字が見えるようになると、打てる手がいちばん増える院です。",
+    body:"「把握していない」が多かったのは、課題がないのではなく、課題を見つける数字がまだ手元にないということ。まずは患者さんの動きを見えるようにするところからです。",
+    reveal:[
+      ["新規患者→2回目→5回目の流れ","最初に直す場所が決まる"],
+      ["7日以上空いた患者さんの名前","今日連絡する人を決められる"],
+      ["離反率","毎月の目標を立てて、良くなったか確かめられる"]
+    ] },
+
+  T06:{ code:"TYPE 06", name:"数字活用 伸びしろタイプ",
+    kata:"数字を見るタイミングを変えると、さらに伸びそうな院です。",
+    body:"月末に見る数字は「結果」、毎朝見る数字は「行動のきっかけ」。見るタイミングが変わるだけで、打てる手が増えます。",
+    reveal:[
+      ["7日以上空いた人の一覧（毎朝）","朝礼で、連絡する人と担当を決められる"],
+      ["今月の目標に対する進捗","月の途中で、足りない分に気づける"],
+      ["スタッフごとの数字","数字で褒めて、数字で相談できる"]
+    ] }
+};
+
+/* 高スコア院向け（誤判定防止のため追加） */
+TYPES.T00 = { code:"TYPE 00", name:"数字活用 上級タイプ",
+  kata:"6項目すべてが高水準。すでに数字で判断できている院です。",
+  body:"次の一歩は、院ぜんたいの平均ではなく層ごとの差を見ること。平均が良いほど、伸びしろは平均の中に隠れます。",
+  reveal:[
+    ["年齢・症状ごとの継続率","続かない層に向けて、初回の説明や広告を変えられる"],
+    ["スタッフごとの2回目来院率","上手な人の型を、院全体に広げられる"],
+    ["患者さんごとのLTV","自費の提案を、合いそうな患者さんに絞れる"]
+  ] };
+
+/* =========================================================
+   特典資料（タイプ別）
+   url：GoogleドライブのPDFの共有リンク（リンクを知っている全員が閲覧可）
+   ========================================================= */
+const GIFTS = {
+  T00:{ title:"平均の奥にある伸びしろを見つける", url:"https://drive.google.com/file/d/1Bpp-K7XUuKKfLt-xDqhDK6BsRTH6hfDc/view?usp=sharing" },
+  T01:{ title:"広告費を足す前に見る3つの数字",     url:"https://drive.google.com/file/d/1FNd-9TjkbZ8bdBAi2C6sBAxGBKhf8Dpl/view?usp=sharing" },
+  T02:{ title:"2回目・5回目につなげる初診の数字",   url:"https://drive.google.com/file/d/1bDwbV9s8_nz1JRY1GclFX-TaeUfrJ8Z3/view?usp=sharing" },
+  T03:{ title:"離れかけた患者さんに7日目で気づく", url:"https://drive.google.com/file/d/1wv_8-7aK2eQT60ivS6LUaw39zXPTxnWB/view?usp=sharing" },
+  T04:{ title:"自費が決まらない理由を数字で分ける", url:"https://drive.google.com/file/d/1XRXxeaiGsFxAxhdALNY2AntV3jl5Kms9/view?usp=sharing" },
+  T05:{ title:"まず出してみる3つの数字",           url:"https://drive.google.com/file/d/1rER-d6m1uv8z9-JwSVPBocKLbWOEPZpZ/view?usp=sharing" },
+  T06:{ title:"月末の数字を、毎朝の行動に変える",   url:"https://drive.google.com/file/d/1XQtYqWzp6kPWbZz_ivORmwACmDje91cw/view?usp=sharing" }
+};
+
+/* カテゴリー→タイプ（フォールバック用） */
+const CAT_TO_TYPE = { shinkan:"T01", teichaku:"T02", ridatsu:"T03", tanka:"T04", bunseki:"T05", kaizen:"T06" };
+
+/* 同点時のタイブレーク順。原因特定に近い領域を優先して最大課題とする */
+const TIE_ORDER = ["bunseki","ridatsu","teichaku","tanka","kaizen","shinkan"];
+
+/* 試算用：Q1・Q2の回答→代表値（Q2「把握していない」は仮の60％） */
+const SIM_NEW  = { 1:8, 2:13, 3:18, 4:23, 5:30 };
+const SIM_RATE = { 1:60, 2:45, 3:63, 4:82, 5:92 };
+
+/* =========================================================
+   3. 状態管理
+   ========================================================= */
+let answers = {};
+let idx = 0;
+let result = null;
+
+function go(v){
+  document.querySelectorAll(".view").forEach(function(e){ e.classList.remove("on"); });
+  const el = document.getElementById("v-"+v);
+  if(el) el.classList.add("on");
+  window.scrollTo(0,0);
+}
+
+/* =========================================================
+   記録（Apps Scriptのスプレッドシートへ）
+   診断が終わった時点で1行追加し、特典の入力で同じ行に連絡先を書き足す
+   ========================================================= */
+let rid = null;
+let lastPayload = null;
+
+function payload(contact){
+  const t = TYPES[result.type];
+  return {
+    id: rid,
+    type: result.type,
+    typeName: t.name,
+    total: result.total,
+    cats: CATS.map(function(c){ return result.scores[c.key].score; }),
+    unknown: result.unknown.length,
+    worst: result.scores[result.worst].label,
+    qs: QUESTIONS.map(function(q){
+      const sc = answers[q.id];
+      const i = q.s ? q.s.indexOf(sc) : sc - 1;
+      return { text: String.fromCharCode(65+i) + "：" + q.o[i], score: sc };
+    }),
+    gift: GIFTS[result.type].url,
+    contact: contact || null
+  };
+}
+
+/* 記録の送り先（Apps Scriptのウェブアプリ）。Googleのログイン状態に左右されないよう、クッキーなしで送る */
+const RECORD_URL = "https://script.google.com/macros/s/AKfycbyL7DftWkEelp9L-9-vx9eT_e2rLTjMO6dbifnfrbSZE-FaE64LUl8M85syhEiyIQ8eAw/exec";
+
+function send(p, ok, ng){
+  lastPayload = p;
+  fetch(RECORD_URL, {
+    method: "POST",
+    mode: "no-cors",
+    credentials: "omit",
+    keepalive: true,
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(p)
+  }).then(function(){ settle(ok); }, function(){ settle(ng); });
+
+  /* 記録側の返事は数秒かかることがあるので、1.5秒で先に画面を切り替える（keepaliveで送信は続く） */
+  let settled = false;
+  function settle(fn){ if(!settled){ settled = true; if(fn) fn(); } }
+  setTimeout(function(){ settle(ok); }, 1500);
+}
+
+/* =========================================================
+   4. 質問フロー（選ぶと自動で次へ）
+   ========================================================= */
+function startQuiz(){ idx = 0; go("quiz"); renderQ(); }
+
+/* 進み具合に応じた声かけ */
+function cheerText(i){
+  const left = QUESTIONS.length - i;
+  if(i === 0) return "全部で10問です";
+  if(left === 5) return "ちょうど半分！";
+  if(left === 1) return "ラスト1問！";
+  if(left <= 3) return "あと" + left + "問、もう少し！";
+  return "あと" + left + "問";
+}
+
+function renderQ(){
+  const q = QUESTIONS[idx];
+  document.getElementById("qc").innerHTML = "Q" + (idx+1) + '<i>／10</i>';
+  document.getElementById("qcat").textContent = q.cat;
+  document.getElementById("trackfill").style.width = (idx/QUESTIONS.length*100) + "%";
+  document.getElementById("qtext").textContent = q.q;
+  document.getElementById("qsub").textContent = q.sub;
+  document.getElementById("backbtn").style.visibility = idx===0 ? "hidden" : "visible";
+  document.getElementById("savenote").textContent = cheerText(idx);
+
+  const wrap = document.getElementById("opts");
+  wrap.innerHTML = "";
+  q.o.forEach(function(text,i){
+    const score = q.s ? q.s[i] : i+1;
+    const b = document.createElement("button");
+    b.className = "opt" + (answers[q.id]===score ? " sel" : "");
+    b.innerHTML = '<span class="key">'+String.fromCharCode(65+i)+'</span><span>'+text+'</span>';
+    b.onclick = function(){ choose(q.id, score, b); };
+    wrap.appendChild(b);
+  });
+}
+
+function choose(qid, score, btn){
+  answers[qid] = score;
+  document.querySelectorAll("#opts .opt").forEach(function(e){ e.classList.remove("sel"); });
+  btn.classList.add("sel");
+  setTimeout(function(){
+    if(idx < QUESTIONS.length-1){ idx++; renderQ(); }
+    else { finish(); }
+  }, 270);
+}
+
+function prevQ(){ if(idx>0){ idx--; renderQ(); } }
+
+function restart(){ answers = {}; idx = 0; result = null; rid = null; go("lp"); }
+
+/* =========================================================
+   5. スコア計算 ＋ タイプ判定
+   ========================================================= */
+function calc(a){
+  const scores = {};
+  CATS.forEach(function(c){
+    let s = 0;
+    c.qs.forEach(function(q){ s += (a[q]||0); });
+    scores[c.key] = { label:c.label, score:s, max:c.max, pct:s/c.max, stars:Math.max(1, Math.round(s/c.max*5)) };
+  });
+
+  const total = Object.keys(a).reduce(function(t,k){ return t + a[k]; }, 0);
+  const avg = function(){ let n=0,s=0; for(let i=0;i<arguments.length;i++){ s+=(a[arguments[i]]||0); n++; } return s/n; };
+
+  const unknown = [2,4,5,6,8].filter(function(q){ return a[q]===1; });
+
+  let worst = TIE_ORDER[0];
+  TIE_ORDER.forEach(function(k){ if(scores[k].pct < scores[worst].pct) worst = k; });
+
+  let type, reason;
+  /* Lステップのスコアリング＋条件分岐で同じ判定ができるよう、閾値だけで決める */
+  const allHigh = CATS.every(function(c){ return scores[c.key].pct >= 0.8; });
+
+  if(allHigh && total >= 45){
+    type = "T00"; reason = "全カテゴリーが8割以上（総合 "+total+"/50点）";
+  } else if(unknown.length >= 3){
+    type = "T05";
+    reason = "Q"+unknown.join("・Q")+"で「把握していない／分からない」を選択（"+unknown.length+"項目）";
+  } else if(avg(2,3) <= 2.5){
+    type = "T02"; reason = "初診継続率のスコアが低め（Q2・Q3平均 "+avg(2,3).toFixed(1)+"点）";
+  } else if(avg(4,5) <= 2.5){
+    type = "T03"; reason = "離脱把握のスコアが低め（Q4・Q5平均 "+avg(4,5).toFixed(1)+"点）";
+  } else if(avg(6,7) <= 2.5){
+    type = "T04"; reason = "単価把握のスコアが低め（Q6・Q7平均 "+avg(6,7).toFixed(1)+"点）";
+  } else if(a[1] <= 2){
+    type = "T01"; reason = "新患数が少なめ（Q1 "+a[1]+"点）";
+  } else if(avg(9,10) <= 2.5){
+    type = "T06"; reason = "行動への活用のスコアが低め（Q9・Q10平均 "+avg(9,10).toFixed(1)+"点）";
+  } else {
+    type = "T06"; reason = "大きく低い領域はなく、数字を行動に変える段階と判定";
+  }
+
+  return { type:type, reason:reason, scores:scores, total:total, worst:worst, unknown:unknown };
+}
+
+function finish(){
+  result = calc(answers);
+  rid = Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+  renderResult();
+  go("result");
+  send(payload(null));
+}
+
+/* 特典の受け取り：3項目を確かめて記録し、同じ画面で資料に切り替える */
+function takeGift(e){
+  if(e) e.preventDefault();
+  const v = function(id){ return document.getElementById(id).value.trim(); };
+  const c = { inName:v("f-in"), name:v("f-name"), tel:v("f-tel") };
+  const miss = [];
+  if(!c.inName) miss.push("院名");
+  if(!c.name) miss.push("先生のお名前");
+  if(!c.tel) miss.push("電話番号");
+  const err = document.getElementById("f-err");
+  if(miss.length){ err.textContent = miss.join("・") + "を入力してください"; err.classList.add("on"); return false; }
+  if(!/^[0-9０-９\-－ー()（）\s+]{10,20}$/.test(c.tel) || c.tel.replace(/[^0-9０-９]/g,"").length < 10){
+    err.textContent = "電話番号をご確認ください（例：090-1234-5678）"; err.classList.add("on"); return false;
+  }
+  err.classList.remove("on");
+  const btn = document.getElementById("f-btn");
+  btn.disabled = true; btn.textContent = "送信しています…";
+  const done = function(){ showGift(c.name); };
+  const fail = function(){
+    btn.disabled = false; btn.textContent = "特典資料を受け取る";
+    err.textContent = "送信できませんでした。電波の良いところで、もう一度お試しください。"; err.classList.add("on");
+  };
+  send(payload(c), done, fail);
+  return false;
+}
+
+function showGift(name){
+  const g = GIFTS[result.type];
+  document.getElementById("d-name").textContent = name;
+  document.getElementById("d-open").href = g.url || "#";
+  const memo = "【特典資料】" + g.title + "\n" + (g.url || "");
+  document.getElementById("d-keep").href = "https://line.me/R/share?text=" + encodeURIComponent(memo);
+  document.getElementById("giftform").style.display = "none";
+  document.getElementById("giftdone").classList.add("on");
+  document.getElementById("gift").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* =========================================================
+   6. 結果画面
+   ========================================================= */
+function renderResult(){
+  const t = TYPES[result.type];
+  document.getElementById("r-code").textContent = t.code;
+  /* 「○○ 伸びしろタイプ」の後半は改行させない */
+  const nm = t.name.split(" ");
+  document.getElementById("r-name").innerHTML = "先生の院は<br><mark>「"+nm[0]+" <span style=\"white-space:nowrap\">"+nm[1]+"」</span></mark>です";
+  document.getElementById("r-kata").textContent = t.kata;
+  document.getElementById("r-body").textContent = t.body;
+
+  const st = document.getElementById("r-scores");
+  st.innerHTML = "";
+  CATS.forEach(function(c){
+    const s = result.scores[c.key];
+    const row = document.createElement("div");
+    row.className = "scorerow" + (s.pct <= 0.4 ? " low" : "");
+    row.innerHTML = '<div class="cat">'+s.label+'</div>'
+      + '<div class="stars"><b>'+"★".repeat(s.stars)+'</b>'+"☆".repeat(5-s.stars)+'</div>'
+      + '<div class="val">'+s.score+" / "+s.max+'</div>';
+    st.appendChild(row);
+  });
+
+  document.getElementById("r-worst").innerHTML =
+    "いちばんの伸びしろは <b>"+result.scores[result.worst].label+"</b>（合計 "+result.total+" / 50点）"
+    + "<small>判定の根拠："+result.reason+"</small>";
+
+  document.getElementById("r-reveal").innerHTML = t.reveal.map(function(r){
+    return "<li><b>"+r[0]+"</b><span>"+r[1]+"</span></li>";
+  }).join("");
+
+  /* 試算：2回目に来ていない新患の人数 */
+  const n = SIM_NEW[answers[1]] || 18;
+  const rate = SIM_RATE[answers[2]] || 60;
+  const month = Math.round(n * (100 - rate) / 100);
+  document.getElementById("r-sim").innerHTML =
+    "回答から計算すると、2回目に来ていない新規患者は<br>月 約<b>"+month+"</b>人 ／ 年 約<b>"+(month*12)+"</b>人"
+    + "<strong>この方々の名前、すぐに出せますか？</strong>"
+    + '<span class="note" style="display:block;margin-top:2px">※回答からの目安'+(answers[2]===1 ? "（2回目来院率は仮に60％で計算）" : "")+"</span>";
+
+  document.getElementById("r-gift").textContent = "『" + GIFTS[result.type].title + "』";
+  document.getElementById("giftform").reset();
+  document.getElementById("giftform").style.display = "";
+  document.getElementById("f-btn").disabled = false;
+  document.getElementById("f-btn").textContent = "特典資料を受け取る";
+  document.getElementById("f-err").classList.remove("on");
+  document.getElementById("giftdone").classList.remove("on");
+}
+
+</script>
+</body>
+</html>
