@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>次の一手診断｜整骨院・接骨院・鍼灸院</title>
+<meta name="description" content="数字は使いません。ふだんの院の場面を7つ選ぶだけで、次に力を入れる分野が4タイプで分かる1分診断。回答した先生全員に成功事例集をプレゼント。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="院の“次の一手”診断｜回答した先生全員に成功事例集">
+<meta property="og:description" content="数字は使いません。ふだんの場面を7つ選ぶだけ・約1分。次に力を入れる分野が4タイプで分かります。">
+<!-- 公開する場所を変えたら、og:image のURLも置き場所に合わせて書き換える -->
+<meta property="og:image" content="https://takumitakahagi.github.io/shindan/next/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800&family=Inter:wght@600;800&display=swap">
+<style>
+:root{
+  --bg:#EEF1F7; --card:#FFFFFF; --ink:#1A1F3D; --ink-2:#555B78; --ink-3:#8A90A8; --line:#DDE2EE;
+  --navy:#1E2554; --navy-2:#2E3778; --yellow:#FFC93C; --yellow-d:#E8AE12; --soft-y:#FFF6DA;
+  --c1:#2F7BEA; --c2:#8A5CF6; --c3:#E99A00; --c4:#E5486F;
+  --line-green:#06C755; --line-green-d:#04A347;
+  --f:"M PLUS 1p","Hiragino Sans","Yu Gothic","Meiryo",sans-serif; --num:"Inter","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-weight:500;font-size:16px;line-height:1.75}
+.app{max-width:520px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.top{background:var(--navy);color:#fff;padding-block:18px 22px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));position:relative;overflow:hidden}
+.top::after{content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;border:18px solid rgba(255,201,60,.18);border-radius:50%}
+.brand{font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.7);font-weight:700}
+.top h1{font-size:26px;font-weight:800;margin:6px 0 0;line-height:1.35}
+.top h1 em{font-style:normal;color:var(--yellow)}
+.main{flex:1;padding-block:18px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:14px}
+.card{background:var(--card);border-radius:18px;padding:22px 20px;box-shadow:0 2px 0 rgba(30,37,84,.06),0 8px 24px rgba(30,37,84,.06)}
+.screen{display:none;animation:in .28s ease}
+.screen.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.screen{animation:none}}
+h2{font-size:21px;font-weight:800;line-height:1.45;margin:0 0 10px;text-wrap:balance}
+p{margin:0 0 10px}
+.muted{color:var(--ink-2)}
+.small{font-size:13px}
+.resume{background:var(--soft-y);border:2px solid var(--yellow);border-radius:16px;padding:14px 16px;margin-bottom:14px}
+.resume p{margin:0 0 8px;font-size:14px}
+.resume b{font-size:16px}
+.resume .row{display:flex;gap:8px;flex-wrap:wrap}
+.resume .row>*{flex:1 1 160px}
+.btn-sub{background:#fff;color:var(--ink-2);border:2px solid var(--line);box-shadow:none;font-size:15px;padding:12px}
+.gift{display:flex;gap:12px;align-items:center;background:var(--soft-y);border:2px solid var(--yellow);border-radius:14px;padding:12px 14px;margin:14px 0}
+.gift .ic{flex:none;width:42px;height:42px;border-radius:12px;background:var(--yellow);display:grid;place-items:center;font-weight:800;color:var(--navy);font-size:12px;line-height:1.1;text-align:center}
+.gift b{display:block;font-size:15px}
+.gift span{font-size:13px;color:var(--ink-2)}
+.points{list-style:none;padding:0;margin:12px 0 16px;display:grid;gap:8px}
+.points li{display:flex;gap:10px;align-items:center;font-size:14.5px}
+.points li::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='%23FFC93C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+.types{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:14px 0 4px}
+.types span{font-size:12px;font-weight:700;text-align:center;border-radius:10px;padding:8px 2px;color:#fff}
+label.f{display:block;font-size:14px;font-weight:700;margin:14px 0 6px}
+label.f small{color:var(--ink-3);font-weight:500;margin-left:6px}
+input[type=text],input[type=tel]{width:100%;font:inherit;font-size:17px;padding:13px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);outline:none}
+input:focus{border-color:var(--navy-2)}
+.err{color:var(--c4);font-size:13px;min-height:1.4em;margin-top:6px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:14px;padding:16px;font:inherit;font-size:17px;font-weight:800;cursor:pointer;text-decoration:none;text-align:center}
+.btn-main{background:var(--yellow);color:var(--navy);box-shadow:0 4px 0 var(--yellow-d)}
+.btn-main:active{transform:translateY(2px);box-shadow:0 2px 0 var(--yellow-d)}
+.btn-line{background:var(--line-green);color:#fff;box-shadow:0 4px 0 var(--line-green-d)}
+.btn-line:active{transform:translateY(2px);box-shadow:0 2px 0 var(--line-green-d)}
+.btn:focus-visible{outline:3px solid var(--navy-2);outline-offset:3px}
+.privacy{font-size:12px;color:var(--ink-3);margin-top:12px;text-align:center}
+.prog{display:flex;gap:5px;margin-bottom:14px}
+.prog i{flex:1;height:6px;border-radius:3px;background:var(--line)}
+.prog i.done{background:var(--navy-2)}
+.prog i.now{background:var(--yellow)}
+.qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.qno{font-family:var(--num);font-weight:800;color:var(--navy-2);font-size:14px;letter-spacing:.04em}
+.qcat{font-size:12px;font-weight:700;color:#fff;border-radius:999px;padding:2px 10px}
+.qtext{font-size:19px;font-weight:800;line-height:1.55;margin:4px 0 16px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;width:100%;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 14px;font:inherit;font-size:15px;color:var(--ink);cursor:pointer;line-height:1.55}
+.opt .k{flex:none;width:28px;height:28px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-family:var(--num);font-weight:800;font-size:13px;color:var(--navy-2)}
+.opt:hover{border-color:#B8C0DC}
+.opt.sel{border-color:var(--navy-2);background:#F3F5FF}
+.opt.sel .k{background:var(--navy-2);color:#fff}
+.opt:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.back{background:none;border:0;font:inherit;font-size:14px;color:var(--ink-3);margin-top:14px;cursor:pointer;padding:6px 0}
+.res-type{border-radius:16px;padding:18px;color:#fff;margin-bottom:14px}
+.res-type small{display:block;font-size:12.5px;opacity:.85;font-weight:700;letter-spacing:.08em}
+.res-type b{display:block;font-size:26px;font-weight:800;line-height:1.35;margin-top:2px}
+.res-type span{font-size:14px;opacity:.95}
+.bars{display:grid;gap:9px;margin:6px 0 6px}
+.bar{display:grid;grid-template-columns:5.8em 1fr;gap:10px;align-items:center;font-size:13px;font-weight:700;color:var(--ink-2)}
+.bar.me{color:var(--ink)}
+.bar.me span:first-child::after{content:" ◀";font-size:10px;color:var(--navy-2)}
+.bar .t{height:12px;border-radius:6px;background:var(--bg);overflow:hidden}
+.bar .t i{display:block;height:100%;border-radius:6px}
+.note{background:var(--bg);border-radius:12px;padding:12px 14px;font-size:14.5px;margin:12px 0}
+.q1{border-left:4px solid var(--yellow);background:#FFFBEF;border-radius:0 12px 12px 0;padding:10px 14px;font-weight:700;margin:12px 0}
+.next{border:2px dashed #C9CFE3;border-radius:14px;padding:14px;margin:16px 0}
+.next h3{font-size:15px;margin:0 0 6px}
+.next ol{margin:0;padding-left:1.3em;font-size:14px}
+.fallback{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.fallback summary{font-size:13px;color:var(--ink-2);cursor:pointer}
+.fallback textarea{width:100%;margin-top:8px;font:inherit;font-size:14px;line-height:1.6;padding:10px 12px;border:2px solid var(--line);border-radius:10px;resize:none;color:var(--ink);background:#fff}
+.copy{margin-top:8px;font-size:14px;padding:10px}
+.foot{text-align:center;font-size:11.5px;color:var(--ink-3);padding:10px 16px 24px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">ONENEST　1分診断</div>
+    <h1>院の<em>“次の一手”</em>診断</h1>
+  </header>
+  <main class="main">
+
+    <!-- 1. はじめに＋入口の入力 -->
+    <section class="screen on" id="s-start">
+      <div class="resume" id="resume" hidden>
+        <p>前回の結果：<b id="resume-type"></b></p>
+        <p class="small muted">LINEで結果と特典をまだ受け取っていない場合は、こちらから受け取れます。</p>
+        <div class="row">
+          <a class="btn btn-line" id="resume-line" href="#" target="_blank" rel="noopener">LINEで受け取る</a>
+          <button class="btn btn-sub" id="resume-close" type="button">もう一度診断する</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>数字は使いません。<br>ふだんの場面を選ぶだけ。</h2>
+        <p class="muted">7つの質問に答えると、先生の院の“次の一手”が4タイプのどれかが分かります。</p>
+        <div class="types" aria-hidden="true">
+          <span style="background:var(--c1)">集客</span><span style="background:var(--c2)">離反対策</span><span style="background:var(--c3)">窓口単価</span><span style="background:var(--c4)">メニュー</span>
+        </div>
+        <div class="gift"><div class="ic">全員<br>特典</div><div><b>同じタイプの院の「成功事例集」</b><span>答えた先生全員に、LINEでお届けします</span></div></div>
+        <ul class="points"><li>選ぶだけの7問・約1分</li><li>結果はこの画面ですぐ分かります</li><li>前回の経営診断とは別の診断です</li></ul>
+        <form id="entry" novalidate>
+          <p class="small muted" style="margin-top:6px">はじめに、結果と成功事例集をお届けするため、3点だけご入力ください（約30秒）。</p>
+          <label class="f" for="in-name">院名</label>
+          <input type="text" id="in-name" autocomplete="organization" placeholder="例）○○整骨院">
+          <label class="f" for="dr-name">先生のお名前</label>
+          <input type="text" id="dr-name" autocomplete="name" placeholder="例）山田 太郎">
+          <label class="f" for="tel">お電話番号<small>ハイフンなし・全角でも大丈夫です</small></label>
+          <input type="tel" id="tel" autocomplete="tel" inputmode="tel" placeholder="例）09012345678">
+          <div class="err" id="err" role="alert"></div>
+          <button class="btn btn-main" type="submit">診断をはじめる　→</button>
+          <p class="privacy">ご入力いただいた情報は、診断結果・資料のお届けとご連絡に使用します。</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 2. 質問 -->
+    <section class="screen" id="s-q">
+      <div class="card">
+        <div class="prog" id="prog"></div>
+        <div class="qhead"><span class="qno" id="qno"></span><span class="qcat" id="qcat"></span></div>
+        <div class="qtext" id="qtext"></div>
+        <div class="opts" id="opts"></div>
+        <button class="back" id="back" type="button">← ひとつ前に戻る</button>
+      </div>
+    </section>
+
+    <!-- 3. 結果 -->
+    <section class="screen" id="s-res">
+      <div class="card">
+        <div class="res-type" id="r-type"></div>
+        <p class="muted small" id="r-interest"></p>
+        <div class="note" id="r-kizuki" hidden></div>
+        <p id="r-body"></p>
+        <div class="q1" id="r-q"></div>
+        <h3 style="font-size:15px;margin:18px 0 8px">4つの分野の状態 <span class="small muted" style="font-weight:500">（長いほど整っています）</span></h3>
+        <div class="bars" id="r-bars"></div>
+        <p class="small muted">タイプは、この4つの状態と「1年後のイメージ」を合わせて決めています。</p>
+        <div class="next">
+          <h3>LINEで受け取ると届くもの</h3>
+          <ol>
+            <li>このタイプの院が最初に見直したことを、明日から3日間、1日1通</li>
+            <li>3日目に、同じタイプの院の「成功事例集」</li>
+          </ol>
+        </div>
+        <a class="btn btn-line" id="r-line" href="#" target="_blank" rel="noopener">LINEで結果と特典を受け取る</a>
+        <p class="privacy">ボタンを押すとLINEが開き、診断結果のメッセージが入力された状態になります。そのまま送信してください。</p>
+        <details class="fallback">
+          <summary>LINEが開かないとき（パソコンで開いている場合など）</summary>
+          <p class="small muted" style="margin-top:8px">下の文をコピーして、ONENESTの公式LINEに送ってください。同じように結果と特典が届きます。</p>
+          <textarea id="r-text" rows="4" readonly></textarea>
+          <button class="btn btn-sub copy" id="r-copy" type="button">文をコピーする</button>
+        </details>
+      </div>
+    </section>
+
+  </main>
+  <div class="foot">© ONENEST　この診断は、ふだんの様子から次に力を入れる方向をつかむためのものです。</div>
+</div>
+
+<script>
+/* ===== 設定（公開前に書き換える） =====
+   LINE_ID   : 公式LINEのベーシックID（@から始まる）
+   RECORD_URL: 記録用Apps Scriptのウェブアプリ URL（空なら記録しない） */
+const LINE_ID = "@638vsfyf";
+const RECORD_URL = "https://script.google.com/macros/s/AKfycbyL7DftWkEelp9L-9-vx9eT_e2rLTjMO6dbifnfrbSZE-FaE64LUl8M85syhEiyIQ8eAw/exec";
+
+const CATS = {
+  shu:{name:"集客", color:"var(--c1)"},
+  ri:{name:"離反対策", color:"var(--c2)"},
+  tan:{name:"窓口単価", color:"var(--c3)"},
+  me:{name:"メニュー", color:"var(--c4)"}
+};
+const QS = [
+  {cat:"shu", text:"ここ3か月、初めての患者さん（新患）の来院はどんな状態ですか？",
+   opts:["ほとんど来ない","月に数人で、波が大きい","そこそこ来るが、広告を止めると減る","紹介や口コミで安定して来る","紹介・口コミだけで十分に来る"]},
+  {cat:"ri", text:"「最近あの患者さんを見ないな」と気づくのは、どんなときですか？",
+   opts:["言われてみると、ほとんど気づかない","ふとしたときに思い出す","月末に振り返ったとき","週に一度は気にかけている","来なくなる前に声をかけられている"]},
+  {cat:"ri", text:"痛みが落ち着いてきた患者さんに、このあとの通い方をどう伝えていますか？",
+   opts:["特に伝えていない","「また痛くなったら来てください」と伝える","次回の予約だけすすめる","今後の計画を説明して予約を取る","初回から、先の通い方まで示している"]},
+  {cat:"tan", text:"1日の終わりに、来院人数と売上をくらべてどう感じますか？",
+   opts:["こんなに診たのに、売上が少ないと感じる","人数を増やさないと、売上が伸びないと感じる","こんなものかな、と思う","自費があるので納得できる","人数が少ない日でも、売上が出せている"]},
+  {cat:"tan", text:"自費メニューをおすすめするとき、先生の気持ちに近いのは？",
+   opts:["自費がない、または売り込みのようですすめられない","すすめたいが、断られるのが気になる","合いそうな方にだけ、たまにすすめる","必要な方には、自信を持ってすすめている","患者さんのほうから「受けたい」と言われる"]},
+  {cat:"me", text:"予約が詰まって忙しい日、施術の中身はどうなっていますか？",
+   opts:["1人あたりの時間を削って回している","待ち時間が長くなりがち","なんとか同じ内容で回せている","物療やスタッフに任せる部分を決めている","忙しくても同じ内容を出せる流れができている"]},
+  {cat:"int", text:"1年後、院がどうなっていたら一番うれしいですか？",
+   opts:["新しい患者さんが自然に増えている","今の患者さんが長く通い続けてくれている","同じ人数でも売上が上がっている","「この院ならでは」のメニューが看板になっている"]}
+];
+const INT_KEYS = ["shu","ri","tan","me"];
+
+const RESULT = {
+  shu:{name:"集客タイプ", route:"集客", lead:"新患の“入口”を整えると、さらに伸びそうな院です。",
+    body:"ただ、新患は数だけ増やしても、2回目に来なければ広告費だけが残ります。集客で伸びている院は、新患の数と一緒に「1人を集めるのにいくらかかったか」と「そのうち何人が残ったか」を見ています。",
+    q:"先月の新患のうち、2回目に来た方は何人でしたか？"},
+  ri:{name:"離反対策タイプ", route:"離反対策", lead:"新患は来てくれています。通い続けてもらえる仕組みが整うと、大きく伸びそうな院です。",
+    body:"患者さんが離れるのは、多くの場合「良くなったから」ではなく「通う理由が見えなくなったとき」です。そして院が気づくのは、離れてから何週間もあとになりがちです。",
+    q:"7日以上来ていない患者さん、今すぐ何人の名前が出ますか？"},
+  tan:{name:"窓口単価アップタイプ", route:"窓口単価アップ", lead:"患者さんが通ってくれているので、1回あたりの価値を高めると大きく伸びそうな院です。",
+    body:"単価アップというと「値上げ」を思い浮かべがちですが、伸びている院がしているのは値上げではありません。施術の流れの中に、患者さんが「受けてみたい」と思える選択肢を、無理なく組み込んでいます。",
+    q:"今日来た患者さんのうち、自費の選択肢をお伝えできたのは何人ですか？"},
+  me:{name:"メニュー開発タイプ", route:"メニュー開発", lead:"先生の技術を“院の看板”になる形にできると、ぐっと伸びそうな院です。",
+    body:"新しいメニューが続かない理由の多くは、中身ではなく「先生にしかできない」「時間が取れない」「説明しにくい」の3つです。",
+    q:"患者さんに「この院ならでは」と言われるメニューは何ですか？"}
+};
+
+const $ = id => document.getElementById(id);
+const STORE = "nextstep-result";
+const newId = () => { const c="abcdefghjkmnpqrstuvwxyz23456789"; let s=""; const a=new Uint8Array(8); if(window.crypto&&crypto.getRandomValues){ crypto.getRandomValues(a); } else { for(let i=0;i<a.length;i++) a[i]=Math.random()*256|0; } a.forEach(v=>s+=c[v%c.length]); return s; };
+const state = { id:newId(), contact:null, ans:[], i:0, lock:false };
+
+function send(p){
+  if(!RECORD_URL) return;
+  try{
+    fetch(RECORD_URL,{method:"POST",mode:"no-cors",credentials:"omit",keepalive:true,
+      headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)}).catch(()=>{});
+  }catch(e){}
+}
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on", s.id===id));
+  window.scrollTo({top:0});
+}
+function lineText(route, inName, id){
+  return `【次の一手診断】${route}タイプ\n院名：${inName}\n受付番号：${id}\n（このまま送信すると、結果と特典が届きます）`;
+}
+function lineUrl(text){
+  return `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent(text)}`;
+}
+
+/* 前回の結果（同じ端末で、LINEに送り忘れた先生向け） */
+(function(){
+  let saved=null;
+  try{ saved=JSON.parse(localStorage.getItem(STORE)||"null"); }catch(e){}
+  if(!saved||!saved.route||Date.now()-saved.at>14*86400000) return;
+  $("resume-type").textContent=saved.route+"タイプ";
+  $("resume-line").href=lineUrl(lineText(saved.route, saved.inName, saved.id));
+  $("resume").hidden=false;
+})();
+$("resume-close").addEventListener("click", ()=>{ $("resume").hidden=true; try{localStorage.removeItem(STORE);}catch(e){} });
+
+/* 入口 */
+const toHalf = s => s.replace(/[０-９]/g, c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0));
+$("entry").addEventListener("submit", e=>{
+  e.preventDefault();
+  const inName=$("in-name").value.trim(), name=$("dr-name").value.trim();
+  const tel=toHalf($("tel").value).replace(/[^0-9]/g,"");
+  if(!inName||!name){ $("err").textContent="院名と先生のお名前を入力してください。"; return; }
+  if(tel.length<10||tel.length>11){ $("err").textContent="お電話番号を10〜11桁の数字で入力してください。"; return; }
+  $("err").textContent="";
+  state.contact={inName,name,tel};
+  send({stage:"entry", id:state.id, contact:state.contact});
+  state.i=0; renderQ(); show("s-q");
+});
+
+/* 質問 */
+function renderQ(){
+  const q=QS[state.i];
+  $("prog").innerHTML=QS.map((_,k)=>`<i class="${k<state.i?'done':k===state.i?'now':''}"></i>`).join("");
+  $("qno").textContent=`Q${state.i+1} / ${QS.length}`;
+  const c=q.cat==="int"?{name:"これから",color:"var(--navy-2)"}:CATS[q.cat];
+  $("qcat").textContent=c.name; $("qcat").style.background=c.color;
+  $("qtext").textContent=q.text;
+  $("opts").innerHTML=q.opts.map((o,k)=>`<button type="button" class="opt${state.ans[state.i]===k?' sel':''}" data-k="${k}"><span class="k">${"ABCDE"[k]}</span><span>${o}</span></button>`).join("");
+}
+$("opts").addEventListener("click", e=>{
+  const b=e.target.closest(".opt"); if(!b||state.lock) return;
+  state.lock=true;
+  state.ans[state.i]=Number(b.dataset.k);
+  document.querySelectorAll(".opt").forEach(x=>x.classList.toggle("sel", x===b));
+  setTimeout(()=>{
+    state.lock=false;
+    if(state.i<QS.length-1){ state.i++; renderQ(); }
+    else finish();
+  },260);
+});
+$("back").addEventListener("click", ()=>{
+  if(state.lock) return;
+  if(state.i===0){ show("s-start"); return; }
+  state.i--; renderQ();
+});
+
+/* 判定（しきい値の順。12月はマトリクスの販売強化に合わせ、単価を離反より先に見る） */
+function judge(){
+  const a=state.ans.map(v=>v+1);
+  const sc={shu:a[0], ri:a[1]+a[2], tan:a[3]+a[4], me:a[5]};
+  const interest=INT_KEYS[state.ans[6]];
+  const weakIfInt={shu:sc.shu<=3, ri:sc.ri<=6, tan:sc.tan<=6, me:sc.me<=3};
+  if(weakIfInt[interest]) return {type:interest, sc, interest, kizuki:false};
+  const order=[["tan",sc.tan<=5],["ri",sc.ri<=5],["me",sc.me<=2],["shu",sc.shu<=2]];
+  for(const [k,weak] of order){ if(weak) return {type:k, sc, interest, kizuki:true}; }
+  return {type:interest, sc, interest, kizuki:false};
+}
+
+function finish(){
+  const r=judge(), R=RESULT[r.type], c=CATS[r.type];
+  const vision=QS[6].opts[state.ans[6]];
+  $("r-type").style.background=c.color;
+  $("r-type").innerHTML=`<small>先生の院の“次の一手”は</small><b>${R.name}</b><span>${R.lead}</span>`;
+  $("r-interest").textContent=`1年後のイメージ：「${vision}」`;
+  if(r.kizuki){
+    $("r-kizuki").hidden=false;
+    $("r-kizuki").textContent="その1年後に近づくために、先に整えておくと効果が大きくなる分野が見つかりました。";
+  }else{ $("r-kizuki").hidden=true; }
+  $("r-body").textContent=R.body;
+  $("r-q").textContent="まず1つだけ、思い浮かべてみてください。「"+R.q+"」";
+  const max={shu:5, ri:10, tan:10, me:5};
+  $("r-bars").innerHTML=["shu","ri","tan","me"].map(k=>{
+    const pct=Math.round(r.sc[k]/max[k]*100);
+    return `<div class="bar${k===r.type?' me':''}"><span>${CATS[k].name}</span><span class="t"><i style="width:${pct}%;background:${CATS[k].color}"></i></span></div>`;
+  }).join("");
+  const text=lineText(R.route, state.contact.inName, state.id);
+  $("r-line").href=lineUrl(text);
+  $("r-text").value=text;
+  try{ localStorage.setItem(STORE, JSON.stringify({route:R.route, inName:state.contact.inName, id:state.id, at:Date.now()})); }catch(e){}
+  send({stage:"result", id:state.id, contact:state.contact, type:R.name, route:(r.type==="shu"||r.type==="ri")?"BAITAL":"マトリクス",
+    interest:CATS[r.interest].name, kizuki:r.kizuki, scores:r.sc,
+    answers:state.ans.map((v,k)=>QS[k].opts[v])});
+  show("s-res");
+}
+$("r-copy").addEventListener("click", ()=>{
+  const t=$("r-text");
+  const done=()=>{ $("r-copy").textContent="コピーしました"; setTimeout(()=>{$("r-copy").textContent="文をコピーする";},2000); };
+  const pick=()=>{ t.focus(); t.select(); try{ document.execCommand("copy"); done(); }catch(e){ $("r-copy").textContent="文を長押ししてコピーしてください"; } };
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t.value).then(done, pick); } else pick();
+});
+</script>
+</body>
+</html>
