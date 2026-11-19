@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>施術の組み替えシート｜次の一手診断 特典</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800&family=Inter:wght@600;800&display=swap">
+<style>
+:root{--bg:#EEF1F7;--card:#fff;--ink:#1A1F3D;--ink-2:#555B78;--ink-3:#8A90A8;--line:#DDE2EE;--navy:#1E2554;--navy-2:#2E3778;--yellow:#FFC93C;--soft-y:#FFF6DA;--me:#E5486F;--ta:#1C9A6B;--f:"M PLUS 1p","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;--num:"Inter","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-weight:500;font-size:16px;line-height:1.75}
+.app{max-width:560px;margin:0 auto;min-height:100vh}
+.top{background:var(--navy);color:#fff;padding:18px max(20px,env(safe-area-inset-left)) 22px}
+.brand{font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.7);font-weight:700}
+.top h1{font-size:23px;font-weight:800;margin:6px 0 0;line-height:1.4}
+.top h1 em{font-style:normal;color:var(--yellow)}
+.main{padding:16px max(16px,env(safe-area-inset-left)) 40px;display:grid;gap:14px}
+.card{background:var(--card);border-radius:18px;padding:20px 18px;box-shadow:0 2px 0 rgba(30,37,84,.06),0 8px 24px rgba(30,37,84,.06)}
+h2{font-size:18px;font-weight:800;margin:0 0 8px;line-height:1.5}
+p{margin:0 0 10px}
+.muted{color:var(--ink-2)}
+.small{font-size:13px}
+.note{font-size:12.5px;color:var(--ink-3)}
+.step{display:grid;grid-template-columns:1fr 4.6em;gap:8px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:10px;margin-bottom:8px}
+.step input{width:100%;font:inherit;font-size:16px;padding:8px 9px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.step input.min{text-align:right}
+.step .who{grid-column:1/-1;display:flex;gap:6px}
+.who button{flex:1;font:inherit;font-size:13.5px;font-weight:800;border-radius:10px;padding:7px 4px;cursor:pointer;border:2px solid var(--line);background:#fff;color:var(--ink-2)}
+.who button.on.me{background:var(--me);border-color:var(--me);color:#fff}
+.who button.on.ta{background:var(--ta);border-color:var(--ta);color:#fff}
+.step.ta{border-color:#BFE6D5;background:#F4FBF8}
+.add{width:100%;font:inherit;font-size:15px;font-weight:800;color:var(--navy-2);background:#fff;border:2px dashed #C9CFE3;border-radius:14px;padding:12px;cursor:pointer}
+.bar{display:flex;height:18px;border-radius:9px;overflow:hidden;background:var(--line);margin:8px 0}
+.bar i{display:block;height:100%}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.res div{background:var(--soft-y);border-radius:14px;padding:12px}
+.res span{font-size:12.5px;color:var(--ink-2);display:block}
+.res b{font-family:var(--num);font-size:22px;font-weight:800;display:block;line-height:1.3}
+.res .wide{grid-column:1/-1;background:#FFF0D1;border:2px solid var(--yellow)}
+.f{display:grid;grid-template-columns:1fr 6em;gap:10px;align-items:center;margin-top:10px}
+.f input{width:100%;font:inherit;font-size:17px;padding:9px 10px;border:2px solid var(--line);border-radius:10px;text-align:right}
+.chk label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.chk input{width:20px;height:20px;margin-top:4px;accent-color:var(--navy-2);flex:none}
+textarea{width:100%;font:inherit;font-size:15px;line-height:1.7;padding:10px 12px;border:2px solid var(--line);border-radius:12px;resize:vertical}
+.btn{display:flex;justify-content:center;align-items:center;width:100%;border:0;border-radius:14px;padding:14px;font:inherit;font-size:16px;font-weight:800;text-decoration:none}
+.btn-line{background:#06C755;color:#fff}
+.foot{text-align:center;font-size:11.5px;color:var(--ink-3);padding:4px 16px 28px}
+@media print{.noprint,.add{display:none!important}body{background:#fff}.card{box-shadow:none;border:1px solid #ddd}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">次の一手診断　メニュー開発タイプの先生へ</div>
+    <h1><em>施術の組み替え</em>シート</h1>
+  </header>
+  <main class="main">
+    <section class="card">
+      <h2>「先生でなければできないこと」は、何分ありますか？</h2>
+      <p class="muted">いつもの施術を1回分、順番に入れて、それぞれ「先生」か「任せられる」かを選んでください。先生が付きっきりの時間と、任せられる時間が自動で出ます。</p>
+      <p class="note">入れた内容はこの画面の中だけで計算され、どこにも送られません。</p>
+    </section>
+
+    <section class="card">
+      <h2>1. いつもの施術を書き出す</h2>
+      <div id="steps"></div>
+      <button class="add" type="button" id="add">＋ 手順を足す</button>
+    </section>
+
+    <section class="card">
+      <h2>2. 組み替えの結果</h2>
+      <div class="bar"><i id="b-me" style="background:var(--me)"></i><i id="b-ta" style="background:var(--ta)"></i></div>
+      <div class="res">
+        <div><span>先生が付きっきり</span><b id="r-me">―</b></div>
+        <div><span>任せられる時間</span><b id="r-ta">―</b></div>
+      </div>
+      <div class="f"><label for="ppl" style="font-weight:700">1日の来院人数</label><input id="ppl" type="number" inputmode="numeric" placeholder="20"></div>
+      <div class="res" style="margin-top:10px"><div class="wide"><span>任せられる部分を手放すと、1日で空く先生の時間</span><b id="r-free">―</b></div></div>
+      <p class="small muted" style="margin-top:10px">空いた時間は、要所の手技や説明、次の患者さんの評価に回せます。看板メニューを「忙しい日でも出せる」ものにするための余白です。</p>
+    </section>
+
+    <section class="card">
+      <h2>3. 看板にしたいメニューの3つのチェック</h2>
+      <p class="small muted">今ある自費メニュー（これから作りたいメニューでも）を1つ思い浮かべて、当てはまるものに印を付けてください。</p>
+      <div class="chk">
+        <label><input type="checkbox"><span><b>先生が付きっきりの時間は、上の結果より短い</b><br><span class="small muted">土台づくりを任せられているか</span></span></label>
+        <label><input type="checkbox"><span><b>いつもの予約の枠に収まる</b><br><span class="small muted">特別な枠を取らなくても出せるか</span></span></label>
+        <label><input type="checkbox"><span><b>患者さんに30秒で説明できる</b><br><span class="small muted">下の欄に書けるか試してみてください</span></span></label>
+      </div>
+      <p class="small" style="margin:10px 0 4px;font-weight:700">30秒で伝える説明を書いてみる</p>
+      <textarea rows="4" placeholder="例）［いつもの施術］のあとに、［温めてゆるめる時間］を足すメニューです。［20分］ほどで、料金は＋［1,000円］です。"></textarea>
+      <p class="note">3つそろうと、忙しい日でも毎日出せるメニューになります。足りないところが、最初に直すところです。</p>
+    </section>
+
+    <section class="card noprint">
+      <h2>「任せる部分」を一緒に考えます</h2>
+      <p class="small muted">どの手順を、スタッフや物療機器に任せられるか。先生の施術の流れに合わせて、組み替えの案と料金の考え方をお作りします。</p>
+      <a class="btn btn-line" href="https://line.me/R/ti/p/@638vsfyf" target="_blank" rel="noopener">公式LINEで相談する</a>
+    </section>
+  </main>
+  <div class="foot">© ONENEST　入れた内容は保存も送信もされません。</div>
+</div>
+<script>
+const DEF=[["問診・検査",5,"me"],["温める",5,"ta"],["ゆるめる（手技）",10,"me"],["電気・物療",10,"ta"],["要所の手技",5,"me"],["説明・次回の提案",3,"me"]];
+const box=document.getElementById("steps");
+function addStep(name,min,who){
+  const d=document.createElement("div");d.className="step";
+  d.innerHTML=`<input class="nm" value="${name||""}" placeholder="手順の名前"><input class="min" type="number" inputmode="numeric" min="0" value="${min||""}" placeholder="分">
+  <div class="who"><button type="button" class="me">先生</button><button type="button" class="ta">任せられる</button></div>`;
+  d.dataset.who=who||"me";box.appendChild(d);paint(d);
+}
+function paint(d){d.querySelector(".me").classList.toggle("on",d.dataset.who==="me");d.querySelector(".ta").classList.toggle("on",d.dataset.who==="ta");d.classList.toggle("ta",d.dataset.who==="ta");}
+DEF.forEach(s=>addStep(...s));
+document.getElementById("add").onclick=()=>{addStep("",0,"me");calc();};
+box.addEventListener("click",e=>{const b=e.target.closest(".who button");if(!b)return;const d=b.closest(".step");d.dataset.who=b.classList.contains("ta")?"ta":"me";paint(d);calc();});
+function calc(){
+  let me=0,ta=0;box.querySelectorAll(".step").forEach(d=>{const m=+d.querySelector(".min").value||0;if(d.dataset.who==="ta")ta+=m;else me+=m;});
+  const t=me+ta;
+  document.getElementById("r-me").textContent=t?me+"分":"―";
+  document.getElementById("r-ta").textContent=t?ta+"分":"―";
+  document.getElementById("b-me").style.width=t?(me/t*100)+"%":"0";
+  document.getElementById("b-ta").style.width=t?(ta/t*100)+"%":"0";
+  const p=+document.getElementById("ppl").value||0,free=ta*p;
+  document.getElementById("r-free").textContent=p&&ta?(free>=60?Math.floor(free/60)+"時間"+(free%60?free%60+"分":""):free+"分"):"―";
+}
+document.addEventListener("input",calc);calc();
+</script>
+</body>
+</html>

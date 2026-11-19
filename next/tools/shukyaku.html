@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>新患の「残り具合」計算シート｜次の一手診断 特典</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800&family=Inter:wght@600;800&display=swap">
+<style>
+:root{--bg:#EEF1F7;--card:#fff;--ink:#1A1F3D;--ink-2:#555B78;--ink-3:#8A90A8;--line:#DDE2EE;--navy:#1E2554;--navy-2:#2E3778;--yellow:#FFC93C;--soft-y:#FFF6DA;--c:#2F7BEA;--good:#1C9A6B;--bad:#E5486F;--f:"M PLUS 1p","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;--num:"Inter","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-weight:500;font-size:16px;line-height:1.75}
+.app{max-width:560px;margin:0 auto;min-height:100vh}
+.top{background:var(--navy);color:#fff;padding:18px max(20px,env(safe-area-inset-left)) 22px}
+.brand{font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.7);font-weight:700}
+.top h1{font-size:23px;font-weight:800;margin:6px 0 0;line-height:1.4}
+.top h1 em{font-style:normal;color:var(--yellow)}
+.main{padding:16px max(16px,env(safe-area-inset-left)) 40px;display:grid;gap:14px}
+.card{background:var(--card);border-radius:18px;padding:20px 18px;box-shadow:0 2px 0 rgba(30,37,84,.06),0 8px 24px rgba(30,37,84,.06)}
+h2{font-size:18px;font-weight:800;margin:0 0 8px;line-height:1.5}
+p{margin:0 0 10px}
+.muted{color:var(--ink-2)}
+.small{font-size:13px}
+ol.steps{margin:0;padding-left:1.3em;font-size:14.5px}
+.row{border:2px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px}
+.row .name{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.row .name input{flex:1;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+label.f{font-size:12px;color:var(--ink-2);display:block;margin-bottom:2px;font-weight:700}
+input{width:100%;font:inherit;font-size:17px;padding:9px 10px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+input:focus{outline:none;border-color:var(--navy-2)}
+.out{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;font-size:12.5px;color:var(--ink-2)}
+.out b{display:block;font-family:var(--num);font-size:18px;color:var(--ink);font-weight:800}
+.row.best{border-color:var(--good);background:#F1FBF6}
+.row.worst{border-color:#F3B6C3}
+.tag{font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;white-space:nowrap}
+.tag.g{background:var(--good)} .tag.r{background:var(--bad)}
+.btn{display:flex;justify-content:center;align-items:center;gap:6px;width:100%;border:0;border-radius:14px;padding:14px;font:inherit;font-size:16px;font-weight:800;cursor:pointer;text-decoration:none}
+.btn-sub{background:#fff;color:var(--navy-2);border:2px dashed #C9CFE3}
+.btn-line{background:#06C755;color:#fff}
+.sum{background:var(--soft-y);border:2px solid var(--yellow);border-radius:16px;padding:14px 16px}
+.sum .big{font-family:var(--num);font-size:30px;font-weight:800;line-height:1.2}
+.sum ul{margin:8px 0 0;padding-left:1.2em;font-size:14.5px}
+.note{font-size:12.5px;color:var(--ink-3)}
+.foot{text-align:center;font-size:11.5px;color:var(--ink-3);padding:4px 16px 28px}
+@media print{.btn,.noprint{display:none!important}body{background:#fff}.card{box-shadow:none;border:1px solid #ddd}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">次の一手診断　集客タイプの先生へ</div>
+    <h1>新患の<em>「残り具合」</em>計算シート</h1>
+  </header>
+  <main class="main">
+    <section class="card">
+      <h2>どの入口から来た方が、院に残っていますか？</h2>
+      <p class="muted">先月の新患を、来た経路ごとに入れてください。2回目に来た割合と、<b>残った1人あたりの広告費</b>が自動で出ます。</p>
+      <ol class="steps">
+        <li>経路ごとに「新患の人数」を入れる</li>
+        <li>そのうち「2回目に来た人数」を入れる</li>
+        <li>広告費がかかっている経路は「月の費用」も入れる（紹介などは0のまま）</li>
+      </ol>
+      <p class="note" style="margin-top:8px">入れた数字はこの画面の中だけで計算され、どこにも送られません。</p>
+    </section>
+
+    <section class="card">
+      <div id="rows"></div>
+      <button class="btn btn-sub" type="button" id="add">＋ 経路を足す</button>
+    </section>
+
+    <section class="card" id="result">
+      <h2>結果</h2>
+      <div class="sum">
+        <div class="small muted">院全体の2回目来院率</div>
+        <div class="big" id="s-rate">―</div>
+        <ul id="s-list"></ul>
+      </div>
+      <p class="small muted" style="margin-top:12px">広告を増やす前に、<b>残りやすい入口を太くする</b>。集客で伸びた院が最初にしたことです。来月も同じ表で比べると、打った手が効いたかどうかが分かります。</p>
+    </section>
+
+    <section class="card noprint">
+      <h2>毎月これを手で出すのが大変なときは</h2>
+      <p class="small muted">患者管理システム「BAITAL」では、新患がどこから来たかと、何回目で来なくなる方が多いかが、毎朝の画面で分かります。使い方や、先生の院の数字の見方は、公式LINEでお気軽にご相談ください。</p>
+      <a class="btn btn-line" href="https://line.me/R/ti/p/@638vsfyf" target="_blank" rel="noopener">公式LINEで相談する</a>
+    </section>
+  </main>
+  <div class="foot">© ONENEST　入れた数字は保存も送信もされません。</div>
+</div>
+<script>
+const DEF=["紹介","Googleマップ","ホームページ","チラシ","予約サイト・ポータル","看板・通りがかり"];
+const rowsEl=document.getElementById("rows");
+const yen=n=>isFinite(n)?Math.round(n).toLocaleString()+"円":"―";
+const pct=n=>isFinite(n)?Math.round(n*100)+"%":"―";
+function addRow(name){
+  const d=document.createElement("div");d.className="row";
+  d.innerHTML=`<div class="name"><input class="nm" value="${name||""}" placeholder="経路の名前"><span class="flag"></span></div>
+  <div class="grid"><div><label class="f">新患の人数</label><input class="n" type="number" inputmode="numeric" min="0" placeholder="0"></div>
+  <div><label class="f">2回目に来た</label><input class="k" type="number" inputmode="numeric" min="0" placeholder="0"></div>
+  <div><label class="f">月の費用(円)</label><input class="c" type="number" inputmode="numeric" min="0" placeholder="0"></div></div>
+  <div class="out"><div>2回目来院率<b class="o-r">―</b></div><div>新患1人あたり<b class="o-a">―</b></div><div>残った1人あたり<b class="o-k">―</b></div></div>`;
+  rowsEl.appendChild(d);
+}
+DEF.forEach(addRow);
+document.getElementById("add").onclick=()=>addRow("");
+function calc(){
+  let N=0,K=0;const list=[];
+  rowsEl.querySelectorAll(".row").forEach(r=>{
+    const n=+r.querySelector(".n").value||0,k=Math.min(+r.querySelector(".k").value||0,n),c=+r.querySelector(".c").value||0;
+    const nm=r.querySelector(".nm").value||"（名前なし）";
+    r.querySelector(".o-r").textContent=n?pct(k/n):"―";
+    r.querySelector(".o-a").textContent=n&&c?yen(c/n):(n?"0円":"―");
+    r.querySelector(".o-k").textContent=k&&c?yen(c/k):(n&&c?"残り0人":(n?"0円":"―"));
+    r.classList.remove("best","worst");r.querySelector(".flag").innerHTML="";
+    N+=n;K+=k;if(n>=2)list.push({r,nm,n,k,rate:k/n,c});
+  });
+  document.getElementById("s-rate").textContent=N?pct(K/N)+`（${K}/${N}人）`:"―";
+  const ul=document.getElementById("s-list");ul.innerHTML="";
+  if(list.length>=2){
+    list.sort((a,b)=>b.rate-a.rate);
+    const best=list[0],worst=list[list.length-1];
+    if(best.rate>worst.rate){
+      best.r.classList.add("best");best.r.querySelector(".flag").innerHTML='<span class="tag g">残りやすい</span>';
+      worst.r.classList.add("worst");worst.r.querySelector(".flag").innerHTML='<span class="tag r">見直し候補</span>';
+      ul.innerHTML+=`<li>いちばん残りやすい入口は<b>「${best.nm}」</b>（${pct(best.rate)}）</li>`;
+      ul.innerHTML+=`<li>いちばん残りにくい入口は<b>「${worst.nm}」</b>（${pct(worst.rate)}）</li>`;
+    }
+    const paid=list.filter(x=>x.c>0&&x.k>0).sort((a,b)=>a.c/a.k-b.c/b.k);
+    if(paid.length) ul.innerHTML+=`<li>広告費をかけている中で、残った1人あたりがいちばん安いのは<b>「${paid[0].nm}」</b>（${yen(paid[0].c/paid[0].k)}）</li>`;
+  } else if(N){ul.innerHTML='<li>2つ以上の経路に、2人以上の新患を入れると比べられます。</li>';}
+}
+rowsEl.addEventListener("input",calc);calc();
+</script>
+</body>
+</html>

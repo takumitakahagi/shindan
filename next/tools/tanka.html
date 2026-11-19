@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>「＋α」メニューの料金設計シート｜次の一手診断 特典</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800&family=Inter:wght@600;800&display=swap">
+<style>
+:root{--bg:#EEF1F7;--card:#fff;--ink:#1A1F3D;--ink-2:#555B78;--ink-3:#8A90A8;--line:#DDE2EE;--navy:#1E2554;--navy-2:#2E3778;--yellow:#FFC93C;--soft-y:#FFF6DA;--c:#E99A00;--f:"M PLUS 1p","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;--num:"Inter","Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-weight:500;font-size:16px;line-height:1.75}
+.app{max-width:560px;margin:0 auto;min-height:100vh}
+.top{background:var(--navy);color:#fff;padding:18px max(20px,env(safe-area-inset-left)) 22px}
+.brand{font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.7);font-weight:700}
+.top h1{font-size:23px;font-weight:800;margin:6px 0 0;line-height:1.4}
+.top h1 em{font-style:normal;color:var(--yellow)}
+.main{padding:16px max(16px,env(safe-area-inset-left)) 40px;display:grid;gap:14px}
+.card{background:var(--card);border-radius:18px;padding:20px 18px;box-shadow:0 2px 0 rgba(30,37,84,.06),0 8px 24px rgba(30,37,84,.06)}
+h2{font-size:18px;font-weight:800;margin:0 0 8px;line-height:1.5}
+p{margin:0 0 10px}
+.muted{color:var(--ink-2)}
+.small{font-size:13px}
+.f{display:grid;grid-template-columns:1fr 8.5em;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.f:last-child{border-bottom:0}
+.f label{font-weight:700;font-size:15px}
+.f label small{display:block;font-weight:500;color:var(--ink-3);font-size:12px}
+input[type=number]{width:100%;font:inherit;font-size:17px;padding:9px 10px;border:2px solid var(--line);border-radius:10px;text-align:right;background:#fff;color:var(--ink)}
+input:focus{outline:none;border-color:var(--navy-2)}
+.slider{padding:10px 0 4px}
+.slider .v{font-family:var(--num);font-weight:800;font-size:22px}
+input[type=range]{width:100%;accent-color:var(--navy-2)}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.res div{background:var(--soft-y);border-radius:14px;padding:12px}
+.res span{font-size:12.5px;color:var(--ink-2);display:block}
+.res b{font-family:var(--num);font-size:22px;font-weight:800;display:block;line-height:1.3}
+.res .wide{grid-column:1/-1;background:#FFF0D1;border:2px solid var(--yellow)}
+.res .wide b{font-size:28px}
+.say{background:#F3F5FF;border-radius:12px;padding:10px 14px;font-size:14.5px;margin-top:8px}
+.say::before{content:"伝え方の例　";font-size:11.5px;font-weight:800;color:var(--navy-2)}
+.note{font-size:12.5px;color:var(--ink-3)}
+.btn{display:flex;justify-content:center;align-items:center;width:100%;border:0;border-radius:14px;padding:14px;font:inherit;font-size:16px;font-weight:800;text-decoration:none}
+.btn-line{background:#06C755;color:#fff}
+.foot{text-align:center;font-size:11.5px;color:var(--ink-3);padding:4px 16px 28px}
+@media print{.noprint{display:none!important}body{background:#fff}.card{box-shadow:none;border:1px solid #ddd}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">次の一手診断　窓口単価アップタイプの先生へ</div>
+    <h1><em>「＋α」</em>メニューの<br>料金設計シート</h1>
+  </header>
+  <main class="main">
+    <section class="card">
+      <h2>値上げではなく、「選べるもう1つ」で単価を上げる</h2>
+      <p class="muted">いつもの施術はそのままに、患者さんが選べる「＋α」を1つ用意したら、単価と売上がどう変わるかを試算します。数字を入れると自動で計算されます。</p>
+      <p class="note">入れた数字はこの画面の中だけで計算され、どこにも送られません。</p>
+    </section>
+
+    <section class="card">
+      <h2>1. 今の院の数字</h2>
+      <div class="f"><label for="price">今の平均単価<small>1回あたり（保険の窓口金＋自費）</small></label><input id="price" type="number" inputmode="numeric" placeholder="2100"></div>
+      <div class="f"><label for="ppl">1日の来院人数</label><input id="ppl" type="number" inputmode="numeric" placeholder="25"></div>
+      <div class="f"><label for="days">月の診療日数</label><input id="days" type="number" inputmode="numeric" value="22"></div>
+    </section>
+
+    <section class="card">
+      <h2>2. 「＋α」の決め方</h2>
+      <div class="f"><label for="add">＋αの料金<small>いつもの施術に足す金額</small></label><input id="add" type="number" inputmode="numeric" value="1000"></div>
+      <div class="slider">
+        <label for="rate" style="font-weight:700">選ぶ方の割合　<span class="v" id="rate-v">20%</span></label>
+        <input id="rate" type="range" min="5" max="60" step="5" value="20">
+        <p class="note">来院された方のうち、何割が＋αを選ぶかを動かしてみてください。</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3. 試算の結果</h2>
+      <div class="res">
+        <div><span>新しい平均単価</span><b id="r-price">―</b></div>
+        <div><span>1日に選ぶ方</span><b id="r-day">―</b></div>
+        <div class="wide"><span>月の売上の増え方</span><b id="r-month">―</b><span id="r-year"></span></div>
+      </div>
+      <p class="note" style="margin-top:8px">※試算です。実際の選ばれ方は、メニューの中身と伝え方で変わります。</p>
+    </section>
+
+    <section class="card">
+      <h2>4. ＋αに機器などの費用がかかる場合</h2>
+      <p class="small muted">物療機器のリースなど、＋αのために毎月かかる費用を入れると、元が取れる人数が分かります。</p>
+      <div class="f"><label for="cost">月にかかる費用</label><input id="cost" type="number" inputmode="numeric" placeholder="0"></div>
+      <div class="res" style="margin-top:10px">
+        <div><span>元が取れる人数（1日）</span><b id="r-be">―</b></div>
+        <div><span>費用を引いた月の増え方</span><b id="r-net">―</b></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>選ばれる「＋α」にするための3つのこと</h2>
+      <ol style="margin:0;padding-left:1.2em;font-size:14.5px">
+        <li><b>施術の流れの中に置く。</b>別メニューとして説明するより、「今日はここに＋αを足せます」と流れの中で選んでもらう。</li>
+        <li><b>まず体で感じてもらう。</b>言葉だけで勧めるより、一度試してもらうほうが選びやすくなります。</li>
+        <li><b>値段を先にはっきり言う。</b>「＋1,000円です」と先に伝えると、断りやすさが安心につながります。</li>
+      </ol>
+      <div class="say">「今日はいつもの施術に、＋1,000円で［温めてゆるめる時間］を足すこともできます。どちらにされますか？」</div>
+    </section>
+
+    <section class="card noprint">
+      <h2>先生の院の数字で、2パターンの収支を作ります</h2>
+      <p class="small muted">「今のメニューのまま」と「＋αを組み込んだ場合」の2つを、先生の院の数字でお作りします。物療機器を＋αに使う場合の回収の考え方もご相談いただけます。</p>
+      <a class="btn btn-line" href="https://line.me/R/ti/p/@638vsfyf" target="_blank" rel="noopener">公式LINEで相談する</a>
+    </section>
+  </main>
+  <div class="foot">© ONENEST　試算の数字は保存も送信もされません。</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const yen=n=>isFinite(n)?Math.round(n).toLocaleString()+"円":"―";
+function calc(){
+  const price=+$("price").value||0,ppl=+$("ppl").value||0,days=+$("days").value||0,add=+$("add").value||0,rate=+$("rate").value/100,cost=+$("cost").value||0;
+  $("rate-v").textContent=Math.round(rate*100)+"%";
+  const ok=price&&ppl&&days&&add;
+  const perDay=ppl*rate, month=perDay*add*days;
+  $("r-price").textContent=ok?yen(price+add*rate):"―";
+  $("r-day").textContent=ok?(Math.round(perDay*10)/10)+"人":"―";
+  $("r-month").textContent=ok?"＋"+yen(month):"―";
+  $("r-year").textContent=ok?"年間では ＋"+yen(month*12):"";
+  if(cost&&add&&days){
+    const be=cost/(add*days);
+    $("r-be").textContent=(Math.ceil(be*10)/10)+"人";
+    $("r-net").textContent=ok?(month-cost>=0?"＋":"−")+yen(Math.abs(month-cost)):"―";
+  }else{$("r-be").textContent="―";$("r-net").textContent="―";}
+}
+document.querySelectorAll("input").forEach(i=>i.addEventListener("input",calc));calc();
+</script>
+</body>
+</html>
